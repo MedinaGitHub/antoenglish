@@ -1,48 +1,33 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Volume2 } from "lucide-react";
 
 const phrases = [
-  "Your turn!",
-  "Grab a card.",
-  "Pick two!",
-  "Shuffle up!",
-  "Deal out seven each.",
-  "I don’t have that color or number.",
-  "Reverse it!",
-  "Skip you!",
-  "Change it to (red/blue/green/yellow).",
-  "I gotta pick four!",
-  "I’m down to my last card!",
-  "UNO!",
-  "You didn’t say UNO!",
-  "Let’s do another round.",
-  "Who’s going first?",
-  "I won!",
-  "Keep drawing until you get one you can play.",
-  "What color is it now?",
-  "That’s a wild one!",
-  "Nope, you can’t play that!",
+  "One",
+  "Two",
+  "Three",
+  "Four",
+  "Five",
+  "Six",
+  "Seven",
+  "Eight",
+  "Nine",
+  "Ten",
+  "Yellow",
+  "Red",
+  "Green",
+  "Blue",
+  "Uno!",
+  "Reverse Card",
+  "Skip Card",
+  "Draw Two Card",
+  "Draw Four Card",
+  "Wild Card",
 ];
 export default function UnoGlossaryOfWords() {
   const [speaking, setSpeaking] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(0);
-  console.log("windowWidth", windowWidth);
-  // Hook para medir el ancho de la pantalla
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-
-    // Setea el ancho de la pantalla cuando se monta el componente
-    handleResize();
-
-    // Actualiza el ancho si cambia el tamaño de la ventana
-    window.addEventListener("resize", handleResize);
-
-    // Limpieza del evento al desmontar el componente
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   const speak = (text: string) => {
     if ("speechSynthesis" in window) {

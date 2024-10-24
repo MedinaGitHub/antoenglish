@@ -11,6 +11,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import UnoGlossaryOfWords from "../sections/UnoGlossaryOfWords";
+import { UnoLevel1, UnoLevel2, UnoLevel3, UnoLevel4 } from "../chats/uno";
+import Conversation from "../sections/Conversation";
 export default function Component() {
   return (
     <>
@@ -41,7 +43,7 @@ export default function Component() {
           </Select>
         </nav>
       </header>
-      {/* Title text and h1 with image background */}
+      {/* Title text and h1 with image background 
       <div className="relative h-[240px] sm:h-[100px] md:h-[360px] max-h-[160px] overflow-hidden">
         <img
           src="/uno.jpg"
@@ -50,10 +52,11 @@ export default function Component() {
         />
         <div className="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-white p-4">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center">
-            {/**  Juego de cartas UNO !*/}
+     
           </h1>
         </div>
       </div>
+      */}
       <div className="min-h-screen bg-background px-5">
         {/* Top card */}
         <Card className="mt-6 mb-6 ">
@@ -63,12 +66,20 @@ export default function Component() {
             </div>
             <div>
               <CardTitle className="mb-1">Objetivos</CardTitle>
-              <p className="text-sm text-muted-foreground">
-                Aprender colores, números, y vocabulario básico de juego (ej.
-                "draw," "skip," "reverse", "your turn"). Interacciones básicas:
-                Refuerza frases simples para seguir el ritmo del juego, como
-                "It's your turn," "I win," o "Pick up a card."
-              </p>
+              <div className="flex flex-wrap mt-3">
+                <p className="bg-red-500 text-primary-foreground px-3 py-1 rounded-full text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary mr-2 mb-2">
+                  Colores
+                </p>
+                <p className="bg-yellow-500 text-primary-foreground px-3 py-1 rounded-full text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary mr-2 mb-2">
+                  Números
+                </p>
+                <p className="bg-orange-500 text-primary-foreground px-3 py-1 rounded-full text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary mr-2 mb-2">
+                  Vocabulario de Juego
+                </p>
+                <p className="bg-green-500 text-primary-foreground px-3 py-1 rounded-full text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary mr-2 mb-2">
+                  Intrucciones
+                </p>
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -77,28 +88,38 @@ export default function Component() {
 
         {/* Tabs section */}
         <Tabs defaultValue="tab1" className="w-full mb-6">
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="tab1">Nivel Básico</TabsTrigger>
-            <TabsTrigger value="tab2">Nivel Medio</TabsTrigger>
-            <TabsTrigger value="tab3">Nivel Avanzado</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-4">
+            <TabsTrigger value="tab1">Primer Juego</TabsTrigger>
+            <TabsTrigger value="tab2">Segundo Juego</TabsTrigger>
+            <TabsTrigger value="tab3">Tercer Juego</TabsTrigger>
+            <TabsTrigger value="tab4">Cuarto Juego</TabsTrigger>
           </TabsList>
           <TabsContent
             value="tab1"
             className="bg-secondary/10 p-4 rounded-b-lg"
           >
-            Content for Tab 1
+            <p className="text-sm text-muted-foreground text-center">
+              haz click en cada texto para escuchar la traducción
+            </p>
+            <Conversation initialMessages={UnoLevel1} />
           </TabsContent>
           <TabsContent
             value="tab2"
             className="bg-secondary/10 p-4 rounded-b-lg"
           >
-            Content for Tab 2
+            <Conversation initialMessages={UnoLevel2} />
           </TabsContent>
           <TabsContent
             value="tab3"
             className="bg-secondary/10 p-4 rounded-b-lg"
           >
-            Content for Tab 3
+            <Conversation initialMessages={UnoLevel3} />
+          </TabsContent>
+          <TabsContent
+            value="tab4"
+            className="bg-secondary/10 p-4 rounded-b-lg"
+          >
+            <Conversation initialMessages={UnoLevel4} />
           </TabsContent>
         </Tabs>
 
