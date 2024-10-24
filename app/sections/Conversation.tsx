@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState, useRef, SetStateAction } from "react";
 
 import { Send } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -132,7 +132,9 @@ export default function Component({
             type="text"
             placeholder="Si lo necesitas, escribe en español será traducido al inglés entendiendo el contexto"
             value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
+            onChange={(e: { target: { value: SetStateAction<string> } }) =>
+              setNewMessage(e?.target?.value)
+            }
             className="flex-grow"
           />
           <Button type="submit" size="icon">
